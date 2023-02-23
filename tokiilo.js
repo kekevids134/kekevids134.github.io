@@ -5,6 +5,9 @@ function change_eng(){;
     document.getElementById("txt3").innerHTML = "Ba I Yu: a Baba Is You levelpack";
     document.getElementById("btn0").style.display = "none";
     document.getElementById("btn1").style.display = "inline";
+    document.getElementById("txt4").innerHTML = "Oh, and if you're here for the (unfinished) ARG, use this text box:"
+    document.getElementById("btn2").innerHTML = "Submit"
+    document.getElementById("txt5").innerHTML = "There's no secrets or any lore here 'cause the arg literally has 0% progress"
 }
 function change_tp(){;
     document.getElementById("txt0").innerHTML = "toki! mi jan Kikili. ni li lipu Kita mi.";
@@ -13,6 +16,17 @@ function change_tp(){;
     document.getElementById("txt3").innerHTML = "musi Pa A Ju: kulupu poki lon musi Papa Li Sina(anu Papa Isu Ju)";
     document.getElementById("btn0").style.display = "inline";
     document.getElementById("btn1").style.display = "none";
+    document.getElementById("txt4").innerHTML = "a, sina kama lon ni tan ARG pi pini ala la o kepeken poki nimi ni:"
+    document.getElementById("btn2").innerHTML = "o kama sona e ijo len"
+    document.getElementById("txt5").innerHTML = "musi ARG li pini ala la ni li jo ala e ijo len"
 }
-
+function argBox(){;
+    var password = document.getElementById("inp0");
+    var passwordEntered = password.value
+    if(true) {
+        return true;
+    }
+    alert("actually how did you get here it should be impossible you're probably a hacker stop hacking")
+    return false;
+}
 
