@@ -8,6 +8,7 @@ function change_eng(){;
     document.getElementById("txt4").innerHTML = "Oh, and if you're here for the (unfinished) ARG, use this text box:"
     document.getElementById("btn2").innerHTML = "Submit"
     document.getElementById("txt5").innerHTML = "There's no secrets or any lore here 'cause the arg literally has 0% progress"
+    document.getElementById("txt6").innerHTML = "RattlesnakeOS(python project)"
 }
 function change_tp(){;
     document.getElementById("txt0").innerHTML = "toki! mi jan Kikili. ni li lipu Kita mi.";
@@ -19,6 +20,7 @@ function change_tp(){;
     document.getElementById("txt4").innerHTML = "a, sina kama lon ni tan ARG pi pini ala la o kepeken poki nimi ni:"
     document.getElementById("btn2").innerHTML = "o kama sona e ijo len"
     document.getElementById("txt5").innerHTML = "musi ARG li pini ala la ni li jo ala e ijo len"
+    document.getElementById("txt6").innerHTML = "lipu RattlesnakeOS(tokiilo)"
 }
 function argBox(){;
     var password = document.getElementById("inp0");
