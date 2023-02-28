@@ -9,6 +9,7 @@ function change_eng(){;
     document.getElementById("btn2").innerHTML = "Submit"
     document.getElementById("txt5").innerHTML = "There's no secrets or any lore here 'cause the arg literally has 0% progress"
     document.getElementById("txt6").innerHTML = "RattlesnakeOS(python project)"
+    document.getElementById("txt7").innerHTML = "My friend's website!"
 }
 function change_tp(){;
     document.getElementById("txt0").innerHTML = "toki! mi jan Kikili. ni li lipu Kita mi.";
@@ -18,9 +19,10 @@ function change_tp(){;
     document.getElementById("btn0").style.display = "inline";
     document.getElementById("btn1").style.display = "none";
     document.getElementById("txt4").innerHTML = "a, sina kama lon ni tan ARG pi pini ala la o kepeken poki nimi ni:"
-    document.getElementById("btn2").innerHTML = "o kama sona e ijo len"
+    document.getElementById("btn2").innerHTML = "o pana e nimi"
     document.getElementById("txt5").innerHTML = "musi ARG li pini ala la ni li jo ala e ijo len"
-    document.getElementById("txt6").innerHTML = "lipu RattlesnakeOS(tokiilo)"
+    document.getElementById("txt6").innerHTML = "lipu RattlesnakeOS(toki ilo)"
+    document.getElementById("txt7").innerHTML = "lipu Kita pi jan pona mi!"
 }
 function argBox(){;
     var password = document.getElementById("inp0");
