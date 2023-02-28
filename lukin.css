@@ -1,20 +1,20 @@
 body {
     background-color: #5776d3;
   }
-  h1 {
+h1 {
     color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
-  }
-  p {
+}
+p {
     color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
-  }
-  p.len {
+}
+p.len {
     display: none;
-  }
-  a {
+}
+a {
     font-family: Arial, Helvetica, sans-serif;
-  }
-  button {
+}
+button {
     background-color: white;
-  }
+}
