@@ -12,6 +12,9 @@ p {
 p.len {
     display: none;
 }
+p.lukin {
+    display: inline;
+}
 a {
     font-family: Arial, Helvetica, sans-serif;
 }
