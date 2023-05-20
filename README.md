@@ -1,2 +1,2 @@
-# lipu-kita-mi
+# lipu Kita mi
 ### yeah that's it
