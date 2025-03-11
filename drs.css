@@ -1,0 +1,35 @@
+body {
+    background-color: #660a0a;
+  }
+h1 {
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+h2 {
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+h3 {
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+p {
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+p.hide {
+    display: none;
+}
+p.lukin {
+    display: inline;
+}
+a {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff
+}
+button {
+    background-color: white;
+}
