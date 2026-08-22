@@ -1,2 +1,2 @@
-# lipu Kita mi
+# github ko
 ### yeah that's it
