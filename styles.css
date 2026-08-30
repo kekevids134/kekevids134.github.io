@@ -6,30 +6,36 @@
 body {
     background-color: #000000;
     color: #507ae0;
-    font-family: vcr-osd-mono;
+    font-family: vcr-osd-mono, baybayin;
     font-size: 22px;
 }
 @font-face {
   font-family: vcr-osd-mono;
   src: url(vcr-osd-mono.ttf);
 }
+@font-face {
+  font-family: baybayin;
+  src: url(notosanstagalog.ttf);
+}
 header {
     text-align: center;
     background-color: #ffffff;
 }
+main {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+h1, h2 {
+    padding: 10px;
+}
 h1 {
     font-size: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 a {
     color: #84d4c1;
 }
 p {
     padding: 10px;
-}
-button {
-    background-color: white;
 }
 #big {
     font-size: 50px;
@@ -38,8 +44,18 @@ button {
     font-size: 20px;
 }
 nav {
-    background-color: #888888;
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 20px;
+}
+#internal {
+    background-color: #888888;
+}
+#external {
+    background-color: #444444;
+}
+table {
+    padding: 10px;
+    background-color: #ffffff;
+    margin: auto;
 }
