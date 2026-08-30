@@ -1,45 +1,116 @@
+/* this is just a better way to load fonts */
+@font-face {
+    font-family: 'VCR OSD Mono';
+    src: url('vcr-osd-mono.ttf') format('truetype');
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* OKAY DON'T PANIC this just helps scale the font better on bobile devices */
+    --base-font-size: clamp(16px, calc(1.2vw + 8px), 24px);
 }
 
 body {
-    background-color: #000000;
-    color: #507ae0;
-    font-family: vcr-osd-mono;
-    font-size: 22px;
+    background: black;
+    color: #6b97ff;
+    font-family: 'VCR OSD Mono';
+    font-size: var(--base-font-size);
+    line-height: 1.25;
 }
-@font-face {
-  font-family: vcr-osd-mono;
-  src: url(vcr-osd-mono.ttf);
+
+b {
+    color: #83a8ff;
 }
+
+/* em(u :walc) units scale accordingly to the font size which makes the website more compatible on bobile devices */
+/* this is like the layout definition for section elements you dont have to understand it */
+section {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+/* funni radial gradient */
+#intro {
+    background: radial-gradient(circle at center, #000f47, transparent);
+}
+
 header {
     text-align: center;
-    background-color: #ffffff;
+    background: white;
 }
+
+header * {
+    padding: 0.5em 0;
+}
+
 h1 {
-    font-size: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    font-size: 2em;
 }
+
+/* added funni hover animations to anchor elements */
 a {
-    color: #84d4c1;
+    display: inline-block;
+    text-decoration: none;
+    color: #7dd3fc;
+    transition: 0.2s ease;
 }
-p {
-    padding: 10px;
+
+a:hover {
+    text-decoration: underline;
+    color: #38bdf8;
 }
+
 button {
     background-color: white;
 }
+
+#vtc {
+    cursor: pointer;
+    transition: letter-spacing 2s ease;
+}
+
+#vtc:hover {
+    transition: letter-spacing 0.5s ease;
+    letter-spacing: 0.1em;
+}
+
 #big {
-    font-size: 50px;
+    font-size: 2em;
 }
 #small {
-    font-size: 20px;
+    font-size: 0.8em;
 }
+
 nav {
-    background-color: #888888;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 20px;
+    background-color: #272727;
+    box-shadow: inset 0 0 1em #666; /* why not */
+    font-size: 0.9em;
+}
+
+#vivid {
+    color: #ff0070;
+}
+
+#stasis {
+    color: #00ffff;
+}
+
+footer {
+    color: white;
+    opacity: 0.5;
+    text-align: center;
+    padding: 1em;
+}
+
+/* funny selection styles */
+::selection {
+    color: white;
+    background: rgba(84, 130, 255, 0.25);
 }
