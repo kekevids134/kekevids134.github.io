@@ -89,11 +89,17 @@ button {
 }
 
 nav {
-    background-color: #272727;
     box-shadow: inset 0 0 1em #666; /* why not */
     font-size: 0.9em;
 }
+#internal {
+    background-color: #272727;
 
+}
+
+#external {
+    background-color: #727272; /* wysi */
+}
 #vivid {
     color: #ff0070;
 }
