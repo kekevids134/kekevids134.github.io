@@ -21,7 +21,7 @@
             .toString()
             .padStart(decimalPlaces, '0');
 
-        baseHue = (360 * Number(fracPart)) / 10 ** decimalPlaces); // ok floating point you win, happy now
+        baseHue = (360 * Number(fracPart)) / 10 ** decimalPlaces; // ok floating point you win, happy now
 
         vividHue = baseHue - 26;
 
