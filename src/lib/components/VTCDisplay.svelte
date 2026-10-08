@@ -4,7 +4,7 @@
     let decimalPlaces = $state(6);
 
     let wholePart = $state(0);
-    let fracPart = $state(0);
+    let fracPart = $state('0');
 
     let baseHue = $state(0);
     let modifiedHue = $state(0);
@@ -13,18 +13,20 @@
     let useLogoStyle = $state(true);
 
     function update() {
-        let vtc = VTC.now();
+        let vtc = VTC.now(decimalPlaces);
 
         wholePart = vtc.floor().toNumber();
-        fracPart = Number(vtc.mod(1).toFixed(decimalPlaces).slice(2));
+        fracPart = Number(vtc.mod(1).toFixed(decimalPlaces).slice(2))
+            .toString()
+            .padStart(decimalPlaces, '0');
 
         baseHue = (360 * Number(fracPart)) / 10 ** decimalPlaces; // ok floating point you win, happy now
 
-        modifiedHue = baseHue - 154;
+        modifiedHue = baseHue - 160;
     }
 
     update();
-    let updateInterval = $state(100);
+    let updateInterval = $state(50);
 
     $effect(() => {
         interval = setInterval(update, updateInterval);
@@ -39,20 +41,20 @@
     }
 
     function increasePrecision() {
-        if (decimalPlaces < 6) {
+        if (decimalPlaces < 10) {
             decimalPlaces++;
         }
     }
 
     function decreaseUpdateInterval() {
-        if (updateInterval > 25) {
-            updateInterval -= 25;
+        if (updateInterval > 10) {
+            updateInterval -= 10;
         }
     }
 
     function increaseUpdateInterval() {
         if (updateInterval < 100) {
-            updateInterval += 25;
+            updateInterval += 10;
         }
     }
 </script>
