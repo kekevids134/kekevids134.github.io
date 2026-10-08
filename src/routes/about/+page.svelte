@@ -29,12 +29,13 @@
         <li>Lingo and Lingo 2</li>
         <li>Geometry Dash</li>
         <li>ULTRAKILL</li>
-        <li>Bee Swarm Simulator (formerly)</li>
         <li>osu!mania</li>
         <li>Project SEKAI global (aka Hatsune Miku: COLORFUL STAGE!)</li>
         <li>Minecraft</li>
         <li>Balatro</li>
+        <li>Bee Swarm Simulator (formerly)</li>
     </ul>
+
     <p>My Discord is <strong>@text_text_keke</strong>. Feel free to DM me for any reason.</p>
 </section>
 
