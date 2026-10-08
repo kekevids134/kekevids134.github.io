@@ -7,7 +7,8 @@
     let fracPart = $state('0');
 
     let baseHue = $state(0);
-    let modifiedHue = $state(0);
+    let vividHue = $state(0);
+    let stasisHue = $state(0);
 
     let interval: ReturnType<typeof setInterval>;
     let useLogoStyle = $state(true);
@@ -20,9 +21,11 @@
             .toString()
             .padStart(decimalPlaces, '0');
 
-        baseHue = (360 * Number(fracPart)) / 10 ** decimalPlaces; // ok floating point you win, happy now
+        baseHue = (360 * Number(fracPart)) / 10 ** decimalPlaces); // ok floating point you win, happy now
 
-        modifiedHue = baseHue - 160;
+        vividHue = baseHue - 26;
+
+        stasisHue = baseHue - 180;
     }
 
     update();
@@ -91,14 +94,14 @@
         {#if useLogoStyle}
             <span
                 class="whole"
-                style:color={`hsl(${baseHue}, 100%, 50%)`}
-                style:text-shadow={`0 0 20px hsla(${baseHue}, 100%, 50%, 0.5)`}
+                style:color={`hsl(${vividHue}, 100%, 50%)`}
+                style:text-shadow={`0 0 20px hsla(${vividHue}, 100%, 50%, 0.5)`}
             >
                 {wholePart}
             </span>/<span
                 class="frac"
-                style:color={`hsl(${modifiedHue}, 100%, 50%)`}
-                style:text-shadow={`0 0 20px hsla(${modifiedHue}, 100%, 50%, 0.5)`}
+                style:color={`hsl(${stasisHue}, 100%, 50%)`}
+                style:text-shadow={`0 0 20px hsla(${stasisHue}, 100%, 50%, 0.5)`}
             >
                 {fracPart}
             </span>
