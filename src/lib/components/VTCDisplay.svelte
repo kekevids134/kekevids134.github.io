@@ -1,11 +1,12 @@
-
 <script lang="ts">
-
-    function emu() {console.log("smile")}
-    // :3c 
-    // :3c!!
-
     import { VTC } from '#lib/timescale.ts';
+    import Decimal from 'decimal.js';
+
+    function emu() {
+        console.log('smile');
+    }
+    // :3c
+    // :3c!!
 
     let decimalPlaces = $state(6);
 
@@ -19,8 +20,23 @@
     let interval: ReturnType<typeof setInterval>;
     let useLogoStyle = $state(true);
 
+    // let it goo
+    let frozen = $state(false);
+
+    const ε = new Decimal('0.0001'); // ts is truly a wacle moment from lan lan man
+    const freezeDurationMs = 5000;
+
     function update() {
         let vtc = VTC.now(decimalPlaces);
+        let diff = vtc.minus(vtc.floor());
+
+        if (diff.lt(ε) && !frozen) {
+            freeze(freezeDurationMs);
+        }
+
+        if (frozen) {
+            vtc = vtc.round();
+        }
 
         wholePart = vtc.floor().toNumber();
         fracPart = Number(vtc.mod(1).toFixed(decimalPlaces).slice(2))
@@ -31,59 +47,70 @@
 
         vividHue = baseHue - 26;
 
-        stasisHue = baseHue - 180;
+        stasisHue = baseHue - 180; // visual/studio RAHHHHHHH
     }
 
     update();
-    let updateInterval = $state(50);
+
+    let updateIntervalMs = $state(50);
 
     $effect(() => {
-        interval = setInterval(update, updateInterval);
+        if (frozen) return;
+
+        interval = setInterval(update, updateIntervalMs);
 
         return () => clearInterval(interval);
     });
 
-    function decreasePrecision() {
-        if (decimalPlaces > 2) {
-            decimalPlaces--;
-        }
-    }
+    const precision = {
+        decrease: () => {
+            if (decimalPlaces > 2) {
+                decimalPlaces--;
+            }
+        },
 
-    function increasePrecision() {
-        if (decimalPlaces < 10) {
-            decimalPlaces++;
-        }
-    }
+        increase: () => {
+            if (decimalPlaces < 10) {
+                decimalPlaces++;
+            }
+        },
+    };
 
-    function decreaseUpdateInterval() {
-        if (updateInterval > 10) {
-            updateInterval -= 10;
-        }
-    }
+    const updateInterval = {
+        decrease: () => {
+            if (updateIntervalMs > 10) {
+                updateIntervalMs -= 10;
+            }
+        },
 
-    function increaseUpdateInterval() {
-        if (updateInterval < 100) {
-            updateInterval += 10;
-        }
+        increase: () => {
+            if (updateIntervalMs < 100) {
+                updateIntervalMs += 10;
+            }
+        },
+    };
+
+    function freeze(durationMs: number) {
+        frozen = true;
+
+        setTimeout(() => {
+            frozen = false;
+        }, durationMs);
     }
 </script>
 
 <svelte:window
     onkeydown={(event) => {
-        if (event.key === 'ArrowLeft') {
-            decreasePrecision();
-        }
+        if (event.code === 'ArrowLeft') precision.decrease();
+        if (event.code === 'ArrowRight') precision.increase();
 
-        if (event.key === 'ArrowRight') {
-            increasePrecision();
-        }
+        if (event.code === 'ArrowUp') updateInterval.decrease();
+        if (event.code === 'ArrowDown') updateInterval.increase();
 
-        if (event.key === 'ArrowUp') {
-            decreaseUpdateInterval();
-        }
-
-        if (event.key === 'ArrowDown') {
-            increaseUpdateInterval();
+        // P is for peam
+        // keep this for now it's for testing purposes
+        if (event.code === 'KeyP') {
+            freeze(freezeDurationMs);
         }
     }}
 />
@@ -97,51 +124,37 @@
         }}
     >
         VTC
-        {#if useLogoStyle}
+
+        <span class="vtc-numeral" class:frozen>
             <span
                 class="whole"
-                style:color={`hsl(${vividHue}, 100%, 50%)`}
-                style:text-shadow={`0 0 20px hsla(${vividHue}, 100%, 50%, 0.5)`}
+                style:color={`hsl(${useLogoStyle ? vividHue : baseHue}, 100%, 50%)`}
+                style:text-shadow={`0 0 20px hsla(${useLogoStyle ? vividHue : baseHue}, 100%, 50%, 0.5)`}
             >
                 {wholePart}
             </span>/<span
                 class="frac"
-                style:color={`hsl(${stasisHue}, 100%, 50%)`}
-                style:text-shadow={`0 0 20px hsla(${stasisHue}, 100%, 50%, 0.5)`}
+                style:color={`hsl(${useLogoStyle ? stasisHue : baseHue}, 100%, 50%)`}
+                style:text-shadow={`0 0 20px hsla(${useLogoStyle ? stasisHue : baseHue}, 100%, 50%, 0.5)`}
             >
                 {fracPart}
             </span>
-        {:else}
-            <span
-                class="whole"
-                style:color={`hsl(${baseHue}, 100%, 50%)`}
-                style:text-shadow={`0 0 20px hsla(${baseHue}, 100%, 50%, 0.5)`}
-            >
-                {wholePart}
-            </span>.<span
-                class="frac"
-                style:color={`hsl(${baseHue}, 100%, 50%)`}
-                style:text-shadow={`0 0 20px hsla(${baseHue}, 100%, 50%, 0.5)`}
-            >
-                {fracPart}
-            </span>
-        {/if}
+        </span>
     </div>
 
     <p class="description">
         Click to switch between styles.<br />
 
-        Use <button onclick={decreasePrecision}>left</button>/<button onclick={increasePrecision}
+        Use <button onclick={precision.decrease}>left</button>/<button onclick={precision.increase}
             >right</button
         >
 
-        arrow keys to change precision. ({decimalPlaces}
-        decimal places)<br />
+        arrow keys to change precision. ({decimalPlaces} DP)<br />
 
-        Use <button onclick={decreaseUpdateInterval}>up</button>/<button
-            onclick={increaseUpdateInterval}>down</button
+        Use <button onclick={updateInterval.decrease}>up</button>/<button
+            onclick={updateInterval.increase}>down</button
         >
-        arrow keys to change update rate. ({updateInterval}ms)<br />
+        arrow keys to change update rate. ({updateIntervalMs}ms)<br />
         <a href="/vtc">What is this?</a>
     </p>
 </section>
@@ -160,6 +173,24 @@
         cursor: pointer;
         user-select: none;
         transition: letter-spacing 2s ease;
+    }
+
+    #vtc .vtc-numeral.frozen {
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: 100%;
+        }
+
+        50% {
+            opacity: 0%;
+        }
+
+        100% {
+            opacity: 100%;
+        }
     }
 
     #vtc:hover {
