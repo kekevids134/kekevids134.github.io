@@ -20,7 +20,7 @@
             <a href="https://kekevids134.github.io">kekeee</a> and
             <a href="https://www.lanzoor.dev">lanzoor</a> and notably
             <strong><em><u>not a cl*nker</u></em></strong>.<br />
-            <a href="https://senkavatisya.nekoweb.org/">pinakakamatayan webring (ish) (temp link)</a>
+            <a href="https://senkavatisya.nekoweb.org/">pinakakamatayan webring (ish) (temp link)</a><br />
             Last updated at
             <button
                 onclick={() => {
