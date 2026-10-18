@@ -1,4 +1,10 @@
+
 <script lang="ts">
+
+    function emu() {console.log("smile")}
+    // :3c 
+    // :3c!!
+
     import { VTC } from '#lib/timescale.ts';
 
     let decimalPlaces = $state(6);
@@ -90,7 +96,7 @@
             useLogoStyle = !useLogoStyle;
         }}
     >
-        VTC:
+        VTC
         {#if useLogoStyle}
             <span
                 class="whole"
